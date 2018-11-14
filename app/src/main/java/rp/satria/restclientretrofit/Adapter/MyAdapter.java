@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.content.Intent;
 
 import java.util.List;
 
 import rp.satria.restclientretrofit.Model.Pembelian;
+import rp.satria.restclientretrofit.LayarDetail;
 import rp.satria.restclientretrofit.R;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
@@ -28,7 +30,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+//    public void onBindViewHolder(MyViewHolder holder, int position) {
+      public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.mTextViewIdPembelian.setText("Id Pembelian :  " + mPembelianList.get(position)
                 .getId_pembelian());
         holder.mTextViewIdPembeli.setText("Id Pembeli :  " + mPembelianList.get(position)
@@ -39,6 +42,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 .getTanggal_beli());
         holder.mTextViewTotalHarga.setText("Total Harga :  " + String.valueOf(mPembelianList.get
                 (position).getTotal_harga()));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void  onClick(View view) {
+                Intent mIntent = new Intent(view.getContext(), LayarDetail.class);
+                mIntent.putExtra("id_pembelian", mPembelianList.get(position).getId_pembelian());
+                mIntent.putExtra("id_pembeli", mPembelianList.get(position).getId_pembeli());
+                mIntent.putExtra("tanggal_beli", mPembelianList.get(position).getTanggal_beli());
+                mIntent.putExtra("id_tiket", mPembelianList.get(position).getId_tiket());
+                mIntent.putExtra("total_harga", String.valueOf(mPembelianList.get(position).getTotal_harga()));
+                view.getContext().startActivity(mIntent);
+            }
+        }
+        );
     }
 
     @Override
