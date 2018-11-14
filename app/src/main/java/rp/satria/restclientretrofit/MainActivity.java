@@ -2,6 +2,8 @@ package rp.satria.restclientretrofit;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +13,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import rp.satria.restclientretrofit.Adapter.MyAdapter;
 import rp.satria.restclientretrofit.Model.GetPembelian;
 import rp.satria.restclientretrofit.Model.Pembelian;
 import rp.satria.restclientretrofit.Model.PostPutDelPembelian;
@@ -22,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     Button btGet, btUpdate, btInsert, btDelete;
     ApiInterface mApiInterface;
 
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         btUpdate = (Button) findViewById(R.id.btUpdate);
         btInsert = (Button) findViewById(R.id.btInsert);
         btDelete = (Button) findViewById(R.id.btDelete);
+
+        mRecyclerView = findViewById(R.id.recyclerView);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
         mApiInterface  = ApiClient.getClient().create(ApiInterface.class);
 
@@ -43,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(Call<GetPembelian> call, Response<GetPembelian> response) {
                         List<Pembelian> pembelianList = response.body().getListDataPembelian();
                         Log.d("Retrofit Get", "Jumlah data pembelian: " + String.valueOf(pembelianList.size()));
+
+                        mAdapter = new MyAdapter(pembelianList);
+                        mRecyclerView.setAdapter(mAdapter);
                     }
 
                     @Override
