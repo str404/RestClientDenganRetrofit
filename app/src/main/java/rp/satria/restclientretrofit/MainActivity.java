@@ -1,5 +1,6 @@
 package rp.satria.restclientretrofit;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,7 +24,7 @@ import rp.satria.restclientretrofit.Rest.ApiInterface;
 public class MainActivity extends AppCompatActivity {
 
 //    Button btGet, btUpdate, btInsert, btDelete;
-    Button btGet;
+    FloatingActionButton btGet;
     ApiInterface mApiInterface;
 
     private RecyclerView mRecyclerView;
@@ -35,7 +36,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btGet = (Button) findViewById(R.id.btGet);
+        btGet = findViewById(R.id.btGet);
+
+//        btGet = (Button) findViewById(R.id.btGet);
 //        btUpdate = (Button) findViewById(R.id.btUpdate);
 //        btInsert = (Button) findViewById(R.id.btInsert);
 //        btDelete = (Button) findViewById(R.id.btDelete);

@@ -1,12 +1,14 @@
 package rp.satria.restclientretrofit;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,7 +20,7 @@ import rp.satria.restclientretrofit.Rest.ApiInterface;
 public class LayarDetail extends AppCompatActivity {
 
     EditText edtIdPembelian, edtIdPembeli, edtTanggalBeli, edtIdTiket, edtTotalHarga;
-    Button btInsert, btUpdate, btDelete, btBack;
+    FloatingActionButton btInsert , btUpdate, btDelete, btBack;
     TextView tvMessage;
     ApiInterface mApiInterface;
 
@@ -33,12 +35,12 @@ public class LayarDetail extends AppCompatActivity {
         edtTanggalBeli = (EditText) findViewById(R.id.edtTanggalBeli);
         edtIdTiket = (EditText) findViewById(R.id.edtIdTiket);
         edtTotalHarga = (EditText) findViewById(R.id.edtTotalHarga);
-        tvMessage = (TextView) findViewById(R.id.tvMessage2);
+//        tvMessage = (TextView) findViewById(R.id.tvMessage2);
 
-        btInsert = (Button) findViewById(R.id.btInsert2);
-        btUpdate = (Button) findViewById(R.id.btUpdate2);
-        btDelete = (Button) findViewById(R.id.btDelete2);
-        btBack = (Button) findViewById(R.id.btBack);
+        btInsert = findViewById(R.id.btInsert2);
+        btUpdate = findViewById(R.id.btUpdate2);
+        btDelete = findViewById(R.id.btDelete2);
+        btBack = findViewById(R.id.btBack);
 
 
 
@@ -64,14 +66,18 @@ public class LayarDetail extends AppCompatActivity {
                 updatePembelianCall.enqueue(new Callback<PostPutDelPembelian>() {
                     @Override
                     public void onResponse(Call<PostPutDelPembelian> call, Response<PostPutDelPembelian> response) {
-                        tvMessage.setText(" Retrofit Update: " +
-                                "\n " + " Status Update : " +response.body().getStatus() +
-                                "\n " + " Message Update : "+ response.body().getMessage());
+                        Toast.makeText(getApplicationContext(), " Retrofit Update: " +
+                                        "\n " + " Status Update : " +response.body().getStatus() +
+                                        "\n " + " Message Update : "+ response.body().getMessage(),
+                                Toast.LENGTH_LONG).show();
+//                        tvMessage.setText();
                     }
 
                     @Override
                     public void onFailure(Call<PostPutDelPembelian> call, Throwable t) {
-                        tvMessage.setText("Retrofit Update: \n Status Update :"+ t.getMessage());
+                        Toast.makeText(getApplicationContext(), "Retrofit Update: \n Status Update :"+ t.getMessage(),
+                                Toast.LENGTH_LONG).show();
+//                        tvMessage.setText();
                     }
                 });
             }
@@ -90,15 +96,19 @@ public class LayarDetail extends AppCompatActivity {
                 postPembelianCall.enqueue(new Callback<PostPutDelPembelian>() {
                     @Override
                     public void onResponse(Call<PostPutDelPembelian> call, Response<PostPutDelPembelian> response) {
-                        tvMessage.setText(" Retrofit Insert: " +
-                                "\n " + " Status Insert : " +
-                                response.body().getStatus() +
-                                "\n " + " Message Insert : "+ response.body().getMessage());
+                        Toast.makeText(getApplicationContext(), " Retrofit Insert: " +
+                                        "\n " + " Status Insert : " +
+                                        response.body().getStatus() +
+                                        "\n " + " Message Insert : "+ response.body().getMessage(),
+                                Toast.LENGTH_LONG).show();
+//                        tvMessage.setText();
                     }
 
                     @Override
                     public void onFailure(Call<PostPutDelPembelian> call, Throwable t) {
-                        tvMessage.setText("Retrofit Insert: \n Status Insert :"+ t.getMessage());
+                        Toast.makeText(getApplicationContext(), "Retrofit Insert: \n Status Insert :"+ t.getMessage(),
+                                Toast.LENGTH_LONG).show();
+//                        tvMessage.setText();
                     }
                 });
             }
@@ -113,14 +123,18 @@ public class LayarDetail extends AppCompatActivity {
                     deletePembelian.enqueue(new Callback<PostPutDelPembelian>() {
                         @Override
                         public void onResponse(Call<PostPutDelPembelian> call, Response<PostPutDelPembelian> response) {
-                            tvMessage.setText(" Retrofit Delete: " +
-                                    "\n " + " Status Delete : " +response.body().getStatus() +
-                                    "\n " + " Message Delete : "+ response.body().getMessage());
+                            Toast.makeText(getApplicationContext(), " Retrofit Delete: " +
+                                            "\n " + " Status Delete : " +response.body().getStatus() +
+                                            "\n " + " Message Delete : "+ response.body().getMessage(),
+                                    Toast.LENGTH_LONG).show();
+//                            tvMessage.setText();
                         }
 
                         @Override
                         public void onFailure(Call<PostPutDelPembelian> call, Throwable t) {
-                            tvMessage.setText("Retrofit Delete: \n Status Delete :"+ t.getMessage());
+                            Toast.makeText(getApplicationContext(), "Retrofit Delete: \n Status Delete :"+ t.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+//                            tvMessage.setText();
                         }
                     });
                 }else{

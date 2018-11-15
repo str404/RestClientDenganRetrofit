@@ -52,7 +52,7 @@
         android:id="@+id/edtIdPembeli"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="id pembelian"
+        android:hint="id pembeli"
         android:layout_alignBaseline="@+id/tvIdPembeli2"
         android:layout_alignLeft="@+id/edtIdPembelian"/>
     <EditText
@@ -78,42 +78,58 @@
         android:hint="Id Tiket"
         android:layout_alignBaseline="@+id/tvIdTiket2"
         android:layout_alignLeft="@+id/edtIdPembelian"/>
+
     <LinearLayout
         android:id="@+id/Linearlayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/tvIdTiket2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
-        <Button
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="168dp"
+        android:orientation="horizontal">
+
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/btInsert2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Insert"/>
-        <Button
+            android:layout_gravity="end|bottom"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_add_white_2x"
+            android:text="Insert" />
+
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/btUpdate2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Update"/>
-        <Button
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:src="@drawable/update"
+            android:text="Update" />
+
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/btDelete2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete"/>
-        <Button
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:src="@android:drawable/ic_input_delete"
+            android:text="Delete" />
+
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/btBack"
-            android:layout_width="wrap_content"
+            android:layout_width="150px"
             android:layout_height="wrap_content"
-            android:text="Back"/>
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:src="@drawable/back2"
+            android:text="Back" />
     </LinearLayout>
-    <TextView
-        android:id="@+id/tvMessage2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pesan Muncul disini"
-        android:layout_below="@+id/Linearlayout2"
-        android:textSize="20sp"
-        android:inputType="textMultiLine"/>
+    <!--<TextView-->
+        <!--android:id="@+id/tvMessage2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Pesan Muncul disini"-->
+        <!--android:layout_below="@+id/Linearlayout2"-->
+        <!--android:textSize="20sp"-->
+        <!--android:inputType="textMultiLine"/>-->
 </RelativeLayout>
