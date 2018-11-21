@@ -1,12 +1,15 @@
 package rp.satria.restclientretrofit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -28,7 +31,7 @@ public class LayarListPembeli extends AppCompatActivity {
     RecyclerView.LayoutManager mLayoutManager;
     Context mContext;
     ApiInterface mApiInterface;
-    FloatingActionButton btGet;
+    FloatingActionButton btGet, btAddData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class LayarListPembeli extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(mContext);
         mRecyclerView.setLayoutManager(mLayoutManager);
         btGet = findViewById(R.id.btGet);
+        btAddData = findViewById(R.id.btAddData);
 
         btGet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +66,53 @@ public class LayarListPembeli extends AppCompatActivity {
                 });
             }
         });
+
+        btAddData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, LayarInsertPembeli.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_layout, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent mIntent;
+        switch (item.getItemId()) {
+
+            case R.id.menuTambahTransPembelian:
+                mIntent = new Intent(this, LayarDetail.class);
+                startActivity(mIntent);
+                return true;
+
+            case R.id.menuListPembeli:
+                mIntent = new Intent(this, LayarListPembeli.class);
+                startActivity(mIntent);
+                return true;
+
+            case R.id.menuInsertDataPembeli:
+                Intent intent = new Intent(this, LayarInsertPembeli.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.menuListPembelian:
+                mIntent = new Intent(this, MainActivity.class);
+                startActivity(mIntent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
 

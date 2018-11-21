@@ -2,6 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/menuTambahTransPembelian"
         android:title="Tambah Trans Pembelian"/>
+    <item android:id="@+id/menuListPembelian"
+        android:title="Menu List Pembelian"/>
     <item android:id="@+id/menuListPembeli"
         android:title="List Pembeli"/>
+    <item android:id="@+id/menuInsertDataPembeli"
+        android:title="Menu Insert Data Pembeli"/>
 </menu>
