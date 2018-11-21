@@ -20,11 +20,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LayarDetail" />
+        <activity android:name=".LayarDetail"
+            android:label="Detail Trans Pembelian" />
         <activity
             android:name=".LayarListPembeli"
             android:label="List Pembeli" />
-        <activity android:name=".LayarInsertPembeli"></activity>
+        <activity android:name=".LayarInsertPembeli"
+            android:label="Insert Pembeli"/>
+        <activity android:name=".LayarEditPembeli"
+            android:label="Edit Pembeli"></activity>
     </application>
 
 </manifest>

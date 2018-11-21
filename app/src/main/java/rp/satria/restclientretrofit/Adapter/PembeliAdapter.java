@@ -1,5 +1,6 @@
 package rp.satria.restclientretrofit.Adapter;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import rp.satria.restclientretrofit.LayarEditPembeli;
 import rp.satria.restclientretrofit.Model.Pembeli;
 import rp.satria.restclientretrofit.R;
 
@@ -47,6 +49,19 @@ public class PembeliAdapter extends RecyclerView.Adapter<PembeliAdapter.PembeliV
             Glide.with(holder.itemView.getContext()).load(R.drawable.default_user).into(holder
                     .mPhotoURL);
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), LayarEditPembeli.class);
+                intent.putExtra("id_pembeli", listPembeli.get(position).getIdPembeli());
+                intent.putExtra("nama", listPembeli.get(position).getNama());
+                intent.putExtra("alamat", listPembeli.get(position).getAlamat());
+                intent.putExtra("telp", listPembeli.get(position).getTelp());
+                intent.putExtra("photo_url", listPembeli.get(position).getPhotoUrl());
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

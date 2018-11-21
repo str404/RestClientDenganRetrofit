@@ -104,6 +104,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
 
+            case R.id.menuListPembelian:
+                mIntent = new Intent(this, MainActivity.class);
+                startActivity(mIntent);
+                return true;
+
 
             default:
                 return super.onOptionsItemSelected(item);
